@@ -11,6 +11,8 @@ public class MainPlayerMovement : NetworkBehaviour
     public float speed = 5.0f;
     public float rotationSpeed = 10.0f;
     Rigidbody rb;
+    public NetworkVariable<bool> isEyeRed = new NetworkVariable<bool>(false,
+    NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     public TMP_Text namePrefab;
     private TMP_Text nameLabel;
     private NetworkVariable<int> postX = new NetworkVariable<int>(0,
@@ -95,14 +97,19 @@ public class MainPlayerMovement : NetworkBehaviour
 
     private void Update()
     {
-        if (IsOwner)
-        {
-            postX.Value = (int)System.Math.Ceiling(transform.position.x);
+        // if (IsOwner)
+        // {
+        //     postX.Value = (int)System.Math.Ceiling(transform.position.x);
 
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                // RequestSwapCharacterModelServerRpc();
-            }
+        //     if (Input.GetKeyDown(KeyCode.F))
+        //     {
+        //         RequestChangeEyeColorServerRpc();
+        //     }
+        // }
+
+        if (IsOwner && Input.GetKeyDown(KeyCode.F))
+        {
+            RequestChangeEyeColorServerRpc();
         }
 
         Vector3 nameLabelPos = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 3.0f, 0));
@@ -144,5 +151,33 @@ public class MainPlayerMovement : NetworkBehaviour
     {
         if (nameLabel != null) { Destroy(nameLabel.gameObject); }
         base.OnDestroy();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void RequestChangeEyeColorServerRpc()
+    {
+        isEyeRed.Value = !isEyeRed.Value; // สลับสถานะระหว่างแดง/ปกติ
+        UpdateEyeColorClientRpc(isEyeRed.Value);
+    }
+
+    [ClientRpc]
+    private void UpdateEyeColorClientRpc(bool makeRed)
+    {
+        ChangeEyeColor(makeRed);
+    }
+
+    private void ChangeEyeColor(bool makeRed)
+    {
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+        foreach (Renderer renderer in renderers)
+        {
+            foreach (Material mat in renderer.materials)
+            {
+                if (mat.name.ToLower().Contains("eye")) // ตรวจสอบชื่อ Material ว่ามีคำว่า "eye"
+                {
+                    mat.color = makeRed ? Color.red : Color.white;
+                }
+            }
+        }
     }
 }
