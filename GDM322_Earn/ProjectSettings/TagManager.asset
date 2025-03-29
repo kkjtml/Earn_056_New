@@ -6,10 +6,10 @@ TagManager:
   tags:
   - MainCanvas
   - DeathZone
-  - Bomb
-  - Coin
   - player
   - Ground
+  - Alient
+  - Tulip
   layers:
   - Default
   - TransparentFX
