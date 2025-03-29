@@ -31,11 +31,11 @@ public class MainPlayerMovement : NetworkBehaviour
 
     public NetworkVariable<int> eyeTextureStatus = new NetworkVariable<int>(0,
         NetworkVariableReadPermission.Everyone,
-        NetworkVariableWritePermission.Server); 
+        NetworkVariableWritePermission.Server);
 
     private LoginManagerScipt loginManager;
 
-     public struct NetworkString : INetworkSerializable
+    public struct NetworkString : INetworkSerializable
     {
         public FixedString32Bytes info;
 
@@ -58,47 +58,6 @@ public class MainPlayerMovement : NetworkBehaviour
         rb = this.GetComponent<Rigidbody>();
     }
 
-    public override void OnNetworkSpawn()
-    {
-        GameObject canvas = GameObject.FindWithTag("MainCanvas");
-        nameLabel = Instantiate(namePrefab, Vector3.zero, Quaternion.identity);
-        nameLabel.transform.SetParent(canvas.transform);
-
-        postX.OnValueChanged += (int previousValue, int newValue) =>
-        {
-            Debug.Log("OwnerID = " + OwnerClientId + " : post x = " + postX.Value);
-        };
-
-        playerNameA.OnValueChanged += (NetworkString previousValue, NetworkString newValue) =>
-        {
-            Debug.Log("OwerId = " + OwnerClientId + " : Old name = " + previousValue.info + " : New name = " + newValue.info);
-        };
-
-        playerNameB.OnValueChanged += (NetworkString previousValue, NetworkString newValue) =>
-        {
-            Debug.Log("OwerId = " + OwnerClientId + " : Old name = " + previousValue.info + " : New name = " + newValue.info);
-        };
-
-        base.OnNetworkSpawn();
-        UpdateEyeTexture(eyeTextureStatus.Value);
-
-        if (IsOwner)
-        {
-            loginManager = GameObject.FindObjectOfType<LoginManagerScipt>();
-            if (loginManager != null)
-            {
-                string name = loginManager.userNameInputField.text;
-
-                if (IsOwnedByServer)
-                    SetPlayerNameServerRpc(name, true);
-                else
-                    SetPlayerNameServerRpc(name, false);
-
-                UpdateEyeTexture(eyeTextureStatus.Value);
-            }
-        }
-    }
-
     private void OnEnable()
     {
         if (nameLabel != null)
@@ -115,12 +74,47 @@ public class MainPlayerMovement : NetworkBehaviour
         eyeTextureStatus.OnValueChanged += (previous, current) => UpdateEyeTexture(current);
     }
 
+    public override void OnNetworkSpawn()
+    {
+        GameObject canvas = GameObject.FindWithTag("MainCanvas");
+        nameLabel = Instantiate(namePrefab, Vector3.zero, Quaternion.identity);
+        nameLabel.transform.SetParent(canvas.transform);
+
+        base.OnNetworkSpawn();
+        UpdateEyeTexture(eyeTextureStatus.Value);
+
+        postX.OnValueChanged += (int previousValue, int newValue) =>
+        {
+            Debug.Log("OwnerID = " + OwnerClientId + " : post x = " + postX.Value);
+        };
+
+        playerNameA.OnValueChanged += (NetworkString previousValue, NetworkString newValue) =>
+        {
+            Debug.Log("OwerId = " + OwnerClientId + " : Old name = " + previousValue.info + " : New name = " + newValue.info);
+        };
+
+        playerNameB.OnValueChanged += (NetworkString previousValue, NetworkString newValue) =>
+        {
+            Debug.Log("OwerId = " + OwnerClientId + " : Old name = " + previousValue.info + " : New name = " + newValue.info);
+        };
+
+        if (IsOwner)
+        {
+            loginManager = GameObject.FindObjectOfType<LoginManagerScipt>();
+            if (loginManager != null)
+            {
+                string name = loginManager.userNameInputField.text;
+
+                if (IsOwnedByServer)
+                    SetPlayerNameServerRpc(name, true);
+                else
+                    SetPlayerNameServerRpc(name, false);
+            }
+        }
+    }
+
     private void Update()
     {
-        Vector3 nameLabelPos = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 3.0f, 0)); 
-        nameLabel.text = gameObject.name;
-        nameLabel.transform.position = nameLabelPos;
-
         if (IsOwner)
         {
             postX.Value = (int)System.Math.Ceiling(transform.position.x);
@@ -131,29 +125,11 @@ public class MainPlayerMovement : NetworkBehaviour
             }
         }
 
+        Vector3 nameLabelPos = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 3.0f, 0));
+        nameLabel.text = gameObject.name;
+        nameLabel.transform.position = nameLabelPos;
+
         UpdatePlayerInfo();
-    }
-
-    private void FixedUpdate()
-    {
-        // if (IsOwner)
-        // {
-        //     float translation = Input.GetAxis("Vertical") * speed;
-        //     translation *= Time.deltaTime;
-        //     rb.MovePosition(rb.position + this.transform.forward * translation);
-
-        //     float rotation = Input.GetAxis("Horizontal");
-        //     if (rotation != 0)
-        //     {
-        //         rotation *= rotationSpeed;
-        //         Quaternion turn = Quaternion.Euler(0f, rotation, 0f);
-        //         rb.MoveRotation(rb.rotation * turn);
-        //     }
-        //     else
-        //     {
-        //         rb.angularVelocity = Vector3.zero;
-        //     }
-        // }
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -173,25 +149,6 @@ public class MainPlayerMovement : NetworkBehaviour
         nameLabel.text = (IsOwnedByServer) ? playerNameA.Value.ToString() : playerNameB.Value.ToString();
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    private void RequestToggleEyeTextureServerRpc(ServerRpcParams rpcParams = default) //เปลี่ยน texture ตา
-    {
-        eyeTextureStatus.Value = (eyeTextureStatus.Value == 0) ? 1 : 0;
-    }
-
-    private void UpdateEyeTexture(int status) 
-    {
-        if (eyerender != null)
-        {
-            if (materialPropertyBlock== null)
-                materialPropertyBlock = new MaterialPropertyBlock();
-
-            Texture newTexture = (status == 1) ? changeEyeTexture : defaultEyeTexture; //ถ้า 1 จะเปลี่ยน texture ตา 
-            materialPropertyBlock.SetTexture(MainTex, newTexture);
-            eyerender.SetPropertyBlock(materialPropertyBlock);
-        }
-    }
-
     private void UpdatePlayerInfo()
     {
         if (IsOwnedByServer)
@@ -201,6 +158,25 @@ public class MainPlayerMovement : NetworkBehaviour
         else
         {
             nameLabel.text = playerNameB.Value.ToString();
+        }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void RequestToggleEyeTextureServerRpc(ServerRpcParams rpcParams = default)
+    {
+        eyeTextureStatus.Value = (eyeTextureStatus.Value == 0) ? 1 : 0;
+    }
+
+    private void UpdateEyeTexture(int status)
+    {
+        if (eyerender != null)
+        {
+            if (materialPropertyBlock == null)
+                materialPropertyBlock = new MaterialPropertyBlock();
+
+            Texture newTexture = (status == 1) ? changeEyeTexture : defaultEyeTexture;
+            materialPropertyBlock.SetTexture(MainTex, newTexture);
+            eyerender.SetPropertyBlock(materialPropertyBlock);
         }
     }
 
