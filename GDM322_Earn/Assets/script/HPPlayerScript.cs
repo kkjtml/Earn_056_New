@@ -52,7 +52,7 @@ public class HPPlayerScript : NetworkBehaviour
                 hpP1.Value--;
                 if (hpP1.Value <= 0)
                 {
-                    PlayerDie();
+                    IsDeath();
                 }
             }
             else
@@ -60,7 +60,7 @@ public class HPPlayerScript : NetworkBehaviour
                 hpP2.Value--;
                 if (hpP2.Value <= 0)
                 {
-                    PlayerDie();
+                    IsDeath();
                 }
             }
             gameObject.GetComponent<PlayerSpawnerScript>().Respawn();
@@ -72,7 +72,7 @@ public class HPPlayerScript : NetworkBehaviour
                 hpP1.Value--;
                 if (hpP1.Value <= 0) 
                 {
-                    PlayerDie();
+                    IsDeath();
                 }
             }
             else
@@ -80,7 +80,7 @@ public class HPPlayerScript : NetworkBehaviour
                 hpP2.Value--;
                 if (hpP2.Value <= 0)
                 {
-                    PlayerDie();
+                    IsDeath();
                 }
             }
         }
@@ -96,9 +96,9 @@ public class HPPlayerScript : NetworkBehaviour
             }
         }
     }
-    private void PlayerDie()
+    private void IsDeath()
     {
-        ownerNetworkAnimationScript.SetTrigger("Die"); 
+        ownerNetworkAnimationScript.SetTrigger("Death"); 
     }
 
 }

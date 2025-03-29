@@ -5,23 +5,22 @@ using Unity.Netcode;
 
 public class PlayerJump : NetworkBehaviour
 {
-    public float jumpForce = 7f; // กำหนดแรงกระโดด
+    public float jumpForce = 10f;
     private Rigidbody rb;
-    private bool isGrounded;
+    private bool isFloor;
     private OwnerNetworkAnimationScript ownerNetworkAnimationScript;
-    // Start is called before the first frame update
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         ownerNetworkAnimationScript = GetComponent<OwnerNetworkAnimationScript>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!IsOwner) return;
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isFloor)
         {
             Jump();
         }
@@ -29,25 +28,23 @@ public class PlayerJump : NetworkBehaviour
 
     void Jump()
     {
-        ownerNetworkAnimationScript.SetTrigger("Jump"); //ถ้ากด spacebar จะเล่นแอนิเมชันกระโดด
+        ownerNetworkAnimationScript.SetTrigger("Jump");
         rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        // ตรวจสอบว่า Player ยืนบนพื้น
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Floor"))
         {
-            isGrounded = true;
+            isFloor = true;
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        // เมื่อไม่ได้อยู่บนพื้น ให้ isGrounded = false
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Floor"))
         {
-            isGrounded = false;
+            isFloor = false;
         }
     }
 }

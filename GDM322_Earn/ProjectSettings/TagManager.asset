@@ -7,9 +7,10 @@ TagManager:
   - MainCanvas
   - DeathZone
   - player
-  - Ground
   - Alient
   - Tulip
+  - Bomb
+  - Floor
   layers:
   - Default
   - TransparentFX
