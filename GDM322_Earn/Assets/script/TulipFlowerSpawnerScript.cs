@@ -7,6 +7,12 @@ public class TulipFlowerSpawnerScript : NetworkBehaviour
 {
     public GameObject tulipflowerPrefab;
     private List<GameObject> spawnedtulipflower = new List<GameObject>();
+    private OwnerNetworkAnimationScript ownerNetworkAnimationScript;
+
+    void Start()
+    {
+        ownerNetworkAnimationScript = GetComponent<OwnerNetworkAnimationScript>();
+    }
 
     void Update()
     {
@@ -14,6 +20,7 @@ public class TulipFlowerSpawnerScript : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            ownerNetworkAnimationScript.SetTrigger("Puttingdown");
             SpawnTulipFlowerServerRpc(OwnerClientId);
         }
     }
