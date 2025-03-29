@@ -2864,7 +2864,7 @@ MonoBehaviour:
   - {fileID: 830377006}
   - {fileID: 952965343}
   - {fileID: 1971017941}
-  AlternatePlayerPrefebs: 9cffadec332e75a4
+  AlternatePlayerPrefebs: ddf5a8949cffadec332e75a4
 --- !u!4 &1052090797
 Transform:
   m_ObjectHideFlags: 0
@@ -3157,6 +3157,8 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
+    - m_Text: Daisy
+      m_Image: {fileID: 0}
     - m_Text: Moonlight
       m_Image: {fileID: 0}
     - m_Text: Colorful
@@ -3752,7 +3754,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Moonlight
+  m_text: Daisy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

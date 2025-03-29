@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 3503763907291438896}
   - component: {fileID: 7261556842342792822}
   m_Layer: 0
-  m_Name: FIsh
+  m_Name: Daisy
   m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
