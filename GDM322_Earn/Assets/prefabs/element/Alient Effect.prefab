@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6652065046478428048}
   - component: {fileID: 4866973263363953093}
   m_Layer: 0
-  m_Name: Bomb Effect
+  m_Name: Alient Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

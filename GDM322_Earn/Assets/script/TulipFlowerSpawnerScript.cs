@@ -12,7 +12,7 @@ public class TulipFlowerSpawnerScript : NetworkBehaviour
     {
         if (!IsOwner) return;
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             SpawnTulipFlowerServerRpc(OwnerClientId);
         }
@@ -45,7 +45,6 @@ public class TulipFlowerSpawnerScript : NetworkBehaviour
         foreach (GameObject tulipflower in spawnedtulipflower)
         {
             ulong tulipflowerId = tulipflower.GetComponent<NetworkObject>().NetworkObjectId;
-            Debug.Log("coinId  " + tulipflowerId);
             if (tulipflowerId == networkObjectId)
             {
                 return tulipflower;

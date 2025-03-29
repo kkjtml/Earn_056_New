@@ -117,9 +117,6 @@ PrefabInstance:
       addedObject: {fileID: 6930048863109298854}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4c7a46fdbc5c1d042a6cfb76cbbc8e91, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2056448383678147981}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4c7a46fdbc5c1d042a6cfb76cbbc8e91, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3562015418436901229}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4c7a46fdbc5c1d042a6cfb76cbbc8e91, type: 3}
       insertIndex: -1
@@ -127,6 +124,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4c7a46fdbc5c1d042a6cfb76cbbc8e91, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9213966500532225799}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4c7a46fdbc5c1d042a6cfb76cbbc8e91, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5227846835533726593}
   m_SourcePrefab: {fileID: 100100000, guid: 4c7a46fdbc5c1d042a6cfb76cbbc8e91, type: 3}
 --- !u!95 &2194520723458732084 stripped
 Animator:
@@ -313,19 +313,6 @@ MonoBehaviour:
   isEyeRed:
     m_InternalValue: 0
   namePrefab: {fileID: 469099481093789672, guid: a487622fd8acff24bb825e7a7957a449, type: 3}
---- !u!114 &2056448383678147981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4890764611997937908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47a7c2c595f624941a8eaa42105c98ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bombPrefab: {fileID: 5085678264938517783, guid: 72854096282688046b5e6032e05b4ec2, type: 3}
 --- !u!114 &3562015418436901229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,3 +353,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tulipflowerPrefab: {fileID: 8963662536907535800, guid: 1b308ba77ef255f4f9028a3fbdba7917, type: 3}
+--- !u!114 &5227846835533726593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4890764611997937908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9251cc14242508d40803385a86607b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alientflowerPrefab: {fileID: 8870004232665242955, guid: ac890a9ce8872b843b20c3e97b3bb72c, type: 3}

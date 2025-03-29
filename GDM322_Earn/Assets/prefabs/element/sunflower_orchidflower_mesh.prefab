@@ -75,6 +75,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 96abc27760872e744b9b25a4ee8a3d3f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3052125136096284888}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 96abc27760872e744b9b25a4ee8a3d3f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8174959383946395198}
   m_SourcePrefab: {fileID: 100100000, guid: 96abc27760872e744b9b25a4ee8a3d3f, type: 3}
 --- !u!1 &8870004232665242955 stripped
 GameObject:
@@ -114,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 0
+  GlobalObjectIdHash: 1297424661
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -193,3 +196,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8174959383946395198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8870004232665242955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67ead59afc5c7634cb9a76eda1621c09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alientflowerSpawner: {fileID: 0}
+  effectPrefab: {fileID: 7671564576188215923, guid: 3f4e745c95fdebb4e9a7d3946f89e71b, type: 3}
