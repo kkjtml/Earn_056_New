@@ -2864,7 +2864,7 @@ MonoBehaviour:
   - {fileID: 830377006}
   - {fileID: 952965343}
   - {fileID: 1971017941}
-  AlternatePlayerPrefebs: ddf5a8949cffadec332e75a4
+  AlternatePlayerPrefebs: ddf5a8949cffadec3e567bf8
 --- !u!4 &1052090797
 Transform:
   m_ObjectHideFlags: 0
@@ -3159,9 +3159,9 @@ MonoBehaviour:
     m_Options:
     - m_Text: Daisy
       m_Image: {fileID: 0}
-    - m_Text: Moonlight
+    - m_Text: Timmy
       m_Image: {fileID: 0}
-    - m_Text: Colorful
+    - m_Text: Granny
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
