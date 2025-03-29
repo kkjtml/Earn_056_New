@@ -8,15 +8,15 @@ public class PlayerControllerScript : MonoBehaviour
 {
     public float speed = 5.0f;
     public float rotationSpeed = 10.0f;
+
     private Animator animator;
     private Rigidbody rb;
-    private bool run;
-
+    private bool running;
     void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        run = false;
+        running = false;
     }
 
     void moveForward()
@@ -30,17 +30,17 @@ public class PlayerControllerScript : MonoBehaviour
                 translation *= Time.fixedDeltaTime;
                 rb.MovePosition(rb.position + this.transform.forward * translation);
 
-                if (!run)
+                if (!running)
                 {
-                    run = true;
-                    animator.SetBool("Run", true);
+                    running = true;
+                    animator.SetBool("Running", true);
                 }
             }
         }
-        else if (run)
+        else if (running)
         {
-            run = false;
-            animator.SetBool("Run", false);
+            running = false;
+            animator.SetBool("Running", false);
         }
     }
 
