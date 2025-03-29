@@ -70,7 +70,8 @@ public class HPPlayerScript : NetworkBehaviour
             if (IsOwnedByServer)
             {
                 hpP1.Value--;
-                if (hpP1.Value <= 0) 
+                ownerNetworkAnimationScript.SetTrigger("Pain");
+                if (hpP1.Value <= 0)
                 {
                     IsDeath();
                 }
@@ -78,6 +79,7 @@ public class HPPlayerScript : NetworkBehaviour
             else
             {
                 hpP2.Value--;
+                ownerNetworkAnimationScript.SetTrigger("Pain");
                 if (hpP2.Value <= 0)
                 {
                     IsDeath();
@@ -89,16 +91,18 @@ public class HPPlayerScript : NetworkBehaviour
             if (IsOwnedByServer)
             {
                 hpP1.Value++;
+                ownerNetworkAnimationScript.SetTrigger("Happy");
             }
             else
             {
                 hpP2.Value++;
+                ownerNetworkAnimationScript.SetTrigger("Happy");
             }
         }
     }
     private void IsDeath()
     {
-        ownerNetworkAnimationScript.SetTrigger("Death"); 
+        ownerNetworkAnimationScript.SetTrigger("Death");
     }
 
 }
