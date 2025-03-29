@@ -113,9 +113,6 @@ PrefabInstance:
       addedObject: {fileID: -3539762398288159787}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5db9fa19ca4d96d48953a79ce383371e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3899597674501110459}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5db9fa19ca4d96d48953a79ce383371e, type: 3}
-      insertIndex: -1
       addedObject: {fileID: -1021980019408251156}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5db9fa19ca4d96d48953a79ce383371e, type: 3}
       insertIndex: -1
@@ -123,6 +120,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5db9fa19ca4d96d48953a79ce383371e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7620083910053795780}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5db9fa19ca4d96d48953a79ce383371e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 362303275898773764}
   m_SourcePrefab: {fileID: 100100000, guid: 5db9fa19ca4d96d48953a79ce383371e, type: 3}
 --- !u!1 &599386200463425227 stripped
 GameObject:
@@ -289,15 +289,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   rotationSpeed: 10
+  isEyeRed:
+    m_InternalValue: 0
   namePrefab: {fileID: 469099481093789672, guid: a487622fd8acff24bb825e7a7957a449, type: 3}
-  originalModelIndex:
-    m_InternalValue: 0
-  characterModelIndex:
-    m_InternalValue: 0
-  isSwapped:
-    m_InternalValue: 0
-  characterModels:
-  - {fileID: 4890764611997937908, guid: 204393305d9ca5947a113ec47204f329, type: 3}
 --- !u!114 &-3539762398288159787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,19 +305,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombPrefab: {fileID: 5085678264938517783, guid: 72854096282688046b5e6032e05b4ec2, type: 3}
---- !u!114 &3899597674501110459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599386200463425227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 710df4faff23a83488b4542922f564b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 5085678264938517783, guid: 02a0217a591943c4d9ab7202b7aada72, type: 3}
 --- !u!114 &-1021980019408251156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +344,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &362303275898773764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599386200463425227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8b19451be81e4c469b9c93895dc2c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tulipflowerPrefab: {fileID: 8963662536907535800, guid: 1b308ba77ef255f4f9028a3fbdba7917, type: 3}
 --- !u!95 &6195421376399621643 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 5db9fa19ca4d96d48953a79ce383371e, type: 3}

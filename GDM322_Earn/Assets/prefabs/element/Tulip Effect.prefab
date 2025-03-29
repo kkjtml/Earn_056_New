@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8383443379208740140}
   - component: {fileID: 3797829550837523678}
   m_Layer: 0
-  m_Name: Coin Effect
+  m_Name: Tulip Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,7 +225,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.98039216, g: 0.92156863, b: 0, a: 1}
+      maxColor: {r: 0.64308316, g: 0, b: 0.98039216, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
