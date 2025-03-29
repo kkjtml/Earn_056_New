@@ -21,7 +21,7 @@ public class MainPlayerMovement : NetworkBehaviour
     new NetworkString { info = "Player" }, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     public NetworkVariable<NetworkString> playerNameB = new NetworkVariable<NetworkString>(
         new NetworkString { info = "Player" }, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-    private LoginManagerScipt loginManager;
+    private LoginManager loginManager;
 
     public struct NetworkString : INetworkSerializable
     {
@@ -82,10 +82,10 @@ public class MainPlayerMovement : NetworkBehaviour
 
         if (IsOwner)
         {
-            loginManager = GameObject.FindObjectOfType<LoginManagerScipt>();
+            loginManager = GameObject.FindObjectOfType<LoginManager>();
             if (loginManager != null)
             {
-                string name = loginManager.userNameInputField.text;
+                string name = loginManager.userNameInput.text;
 
                 if (IsOwnedByServer)
                     SetPlayerNameServerRpc(name, true);

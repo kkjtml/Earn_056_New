@@ -2851,13 +2851,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac7dfafffc3efa49b52ea122dd71214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userNameInputField: {fileID: 1718607383}
-  CoderoomInputField: {fileID: 529049761}
-  textureSelect: {fileID: 1198729793}
+  userNameInput: {fileID: 1718607383}
+  coderoomInput: {fileID: 90133420}
+  color: {fileID: 1198729793}
   loginPanel: {fileID: 1486401685}
   leaveButton: {fileID: 2010779631}
   scorePanel: {fileID: 1356290831}
-  spawnPoint:
+  spawn:
   - {fileID: 128748015}
   - {fileID: 1699349421}
   - {fileID: 1303086023}

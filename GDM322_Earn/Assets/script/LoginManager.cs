@@ -5,16 +5,16 @@ using Unity.Netcode;
 using QFSW.QC;
 using TMPro;
 
-public class LoginManagerScipt : MonoBehaviour
+public class LoginManager : MonoBehaviour
 {
-    public TMP_InputField userNameInputField;
-    public TMP_InputField CoderoomInputField; 
-    public TMP_Dropdown textureSelect;
+    public TMP_InputField userNameInput;
+    public TMP_InputField coderoomInput;
+    public TMP_Dropdown color;
     public GameObject loginPanel;
     public GameObject leaveButton;
     public GameObject scorePanel;
-    public List<GameObject> spawnPoint = new List<GameObject>(); //เพิ่ม List Spawnpoint
-    public List<uint> AlternatePlayerPrefebs; //เพิ่ม PlayerPrefabHash
+    public List<GameObject> spawn = new List<GameObject>(); 
+    public List<uint> AlternatePlayerPrefebs;
 
     public void Start()
     {
@@ -57,8 +57,8 @@ public class LoginManagerScipt : MonoBehaviour
 
     public void Client()
     {
-        string userName = userNameInputField.GetComponent<TMP_InputField>().text;
-        string Coderoom = CoderoomInputField.GetComponent<TMP_InputField>().text;
+        string userName = userNameInput.GetComponent<TMP_InputField>().text;
+        string Coderoom = coderoomInput.GetComponent<TMP_InputField>().text;
         int Character = SelectTexture();
 
         NetworkManager.Singleton.NetworkConfig.ConnectionData = System.Text.Encoding.ASCII.GetBytes(userName + "/" + Coderoom + "/" + Character);
@@ -112,13 +112,13 @@ public class LoginManagerScipt : MonoBehaviour
 
         if (byteLength > 0)
         {
-            string clientData = System.Text.Encoding.ASCII.GetString(connectionData, 0, byteLength); //ชื่อผู้เล่น, รหัสห้อง, การเลือก texture ถูกแปลงจากไบต์เป็นข้อความ ASCII
-            string[] ClientDataAndCode = clientData.Split("/"); //แยกข้อมูลที่ส่งโดยใช้ตัวแบ่ง /
-            int TextureSelect = int.Parse(ClientDataAndCode[2]); //texture
-            string hostData = userNameInputField.GetComponent<TMP_InputField>().text; 
-            string CoderoomHost = CoderoomInputField.GetComponent<TMP_InputField>().text; 
-            isApproved = approveConnection(ClientDataAndCode, hostData, CoderoomHost);
-            response.PlayerPrefabHash = AlternatePlayerPrefebs[TextureSelect]; //ตั้งค่า PlayerPrefabHash ตาม texture ที่เลือก
+            string clientData = System.Text.Encoding.ASCII.GetString(connectionData, 0, byteLength); 
+            string[] ClientDataAndCode = clientData.Split("/"); 
+            int Color = int.Parse(ClientDataAndCode[2]); 
+            string hostData = userNameInput.GetComponent<TMP_InputField>().text;
+            string CoderoomFromHost = coderoomInput.GetComponent<TMP_InputField>().text;
+            isApproved = approveConnection(ClientDataAndCode, hostData, CoderoomFromHost);
+            response.PlayerPrefabHash = AlternatePlayerPrefebs[Color]; 
         }
         else
         {
@@ -129,7 +129,7 @@ public class LoginManagerScipt : MonoBehaviour
         }
 
         response.Approved = isApproved;
-        response.CreatePlayerObject = true; //สร้างตัวละครที่ผู้เล่นเลือก
+        response.CreatePlayerObject = true; 
         response.Position = Vector3.zero;
         response.Rotation = Quaternion.identity;
         SpawnLocation(clientId, response);
@@ -140,32 +140,32 @@ public class LoginManagerScipt : MonoBehaviour
     public bool approveConnection(string[] ClientDataAndCode, string hostData, string CoderoomHost)
     {
         bool isApproved = false;
-        string clientData = ClientDataAndCode[0]; //ชื่อผู้เล่น
-        string CoderoomClient = ClientDataAndCode[1]; //รหัสห้อง
-        string Texture = ClientDataAndCode[2];
+        string clientData = ClientDataAndCode[0]; 
+        string CoderoomClient = ClientDataAndCode[1]; 
+        // string Color = ClientDataAndCode[2];
 
         Debug.Log("HostName = " + hostData);
         Debug.Log("ClientName = " + clientData);
         Debug.Log("Host Coderoom " + CoderoomHost);
         Debug.Log("Client Coderoom " + CoderoomClient);
 
-        bool approveName = System.String.Equals(clientData.Trim(), hostData.Trim()) ? false : true; 
-        bool approveCode = System.String.Equals(CoderoomClient.Trim(), CoderoomHost.Trim()) ? true : false; 
+        bool approveName = System.String.Equals(clientData.Trim(), hostData.Trim()) ? false : true;
+        bool approveCode = System.String.Equals(CoderoomClient.Trim(), CoderoomHost.Trim()) ? true : false;
 
         Debug.Log(approveName);
         Debug.Log(approveCode);
 
         if (approveCode == true && approveName == true)
         {
-            isApproved = true; 
+            isApproved = true;
         }
         else if (approveCode == true && approveName == false)
         {
-            isApproved = false; 
+            isApproved = false;
         }
         else
         {
-            isApproved = false; 
+            isApproved = false;
         }
 
         return isApproved;
@@ -178,14 +178,14 @@ public class LoginManagerScipt : MonoBehaviour
         response.Rotation = Quaternion.Euler(0f, 225f, 0f);
     }
 
-    private GameObject Spawn() 
+    private GameObject Spawn()
     {
-        int random = Random.Range(0, spawnPoint.Count); //เลือกสุ่มเกิดในตำแหน่งที่วางไว้
-        return spawnPoint[random];
+        int random = Random.Range(0, spawn.Count);
+        return spawn[random];
     }
 
     public int SelectTexture()
     {
-        return textureSelect.value; //เลือก texture ตามที่ผู้เล่นต้องการ
+        return color.value; 
     }
 }
