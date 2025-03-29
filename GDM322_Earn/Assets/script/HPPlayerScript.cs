@@ -12,10 +12,8 @@ public class HPPlayerScript : NetworkBehaviour
     MainPlayerMovement mainPlayer;
     public NetworkVariable<int> hpP1 = new NetworkVariable<int>(5,
     NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-
     public NetworkVariable<int> hpP2 = new NetworkVariable<int>(5,
     NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-
     private OwnerNetworkAnimationScript ownerNetworkAnimationScript;
 
     void Start()
@@ -52,7 +50,7 @@ public class HPPlayerScript : NetworkBehaviour
             if (IsOwnedByServer)
             {
                 hpP1.Value--;
-                if (hpP1.Value <= 0) //ถ้า hp น้อยกว่าหรือเท่ากับ 0 ให้เล่นฟังก์ชันตาย
+                if (hpP1.Value <= 0)
                 {
                     PlayerDie();
                 }
@@ -67,12 +65,12 @@ public class HPPlayerScript : NetworkBehaviour
             }
             gameObject.GetComponent<PlayerSpawnerScript>().Respawn();
         }
-        else if (collision.gameObject.tag == "Bomb")
+        else if (collision.gameObject.tag == "Alient")
         {
             if (IsOwnedByServer)
             {
                 hpP1.Value--;
-                if (hpP1.Value <= 0) //ถ้า hp น้อยกว่าหรือเท่ากับ 0 ให้เล่นฟังก์ชันตาย
+                if (hpP1.Value <= 0) 
                 {
                     PlayerDie();
                 }
@@ -86,7 +84,7 @@ public class HPPlayerScript : NetworkBehaviour
                 }
             }
         }
-        else if (collision.gameObject.tag == "Coin")
+        else if (collision.gameObject.tag == "Tulip")
         {
             if (IsOwnedByServer)
             {
@@ -100,7 +98,7 @@ public class HPPlayerScript : NetworkBehaviour
     }
     private void PlayerDie()
     {
-        ownerNetworkAnimationScript.SetTrigger("Die"); // เล่นแอนิเมชันตาย
+        ownerNetworkAnimationScript.SetTrigger("Die"); 
     }
 
 }
