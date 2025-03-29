@@ -6707,7 +6707,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1052090796}
         m_TargetAssemblyTypeName: LoginManagerScipt, Assembly-CSharp
-        m_MethodName: leave
+        m_MethodName: Leave
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

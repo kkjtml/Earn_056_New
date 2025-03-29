@@ -290,11 +290,14 @@ MonoBehaviour:
   speed: 5
   rotationSpeed: 10
   namePrefab: {fileID: 469099481093789672, guid: a487622fd8acff24bb825e7a7957a449, type: 3}
-  eyerender: {fileID: 6986139200925850638}
-  defaultEyeTexture: {fileID: 2800000, guid: 1600660651e962f4bb4cbca89c5ecbec, type: 3}
-  changeEyeTexture: {fileID: 2800000, guid: 1600660651e962f4bb4cbca89c5ecbec, type: 3}
-  eyeTextureStatus:
+  originalModelIndex:
     m_InternalValue: 0
+  characterModelIndex:
+    m_InternalValue: 0
+  isSwapped:
+    m_InternalValue: 0
+  characterModels:
+  - {fileID: 4890764611997937908, guid: 204393305d9ca5947a113ec47204f329, type: 3}
 --- !u!114 &-3539762398288159787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,10 +366,5 @@ MonoBehaviour:
 --- !u!95 &6195421376399621643 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 5db9fa19ca4d96d48953a79ce383371e, type: 3}
-  m_PrefabInstance: {fileID: 328792748413518746}
-  m_PrefabAsset: {fileID: 0}
---- !u!137 &6986139200925850638 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7233867138446155668, guid: 5db9fa19ca4d96d48953a79ce383371e, type: 3}
   m_PrefabInstance: {fileID: 328792748413518746}
   m_PrefabAsset: {fileID: 0}

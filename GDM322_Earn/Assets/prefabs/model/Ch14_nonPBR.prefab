@@ -69,6 +69,10 @@ PrefabInstance:
       value: Ch14_nonPBR
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4c7a46fdbc5c1d042a6cfb76cbbc8e91, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4c7a46fdbc5c1d042a6cfb76cbbc8e91, type: 3}
       propertyPath: m_TagString
       value: player
       objectReference: {fileID: 0}
@@ -208,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3275774358
+  GlobalObjectIdHash: 2759142963
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -307,11 +311,10 @@ MonoBehaviour:
   speed: 5
   rotationSpeed: 10
   namePrefab: {fileID: 469099481093789672, guid: a487622fd8acff24bb825e7a7957a449, type: 3}
-  eyerender: {fileID: 8429145129022402565}
-  defaultEyeTexture: {fileID: 2800000, guid: 517e91f29f1a34e40afef212b6a283b6, type: 3}
-  changeEyeTexture: {fileID: 2800000, guid: 517e91f29f1a34e40afef212b6a283b6, type: 3}
-  eyeTextureStatus:
+  characterModelIndex:
     m_InternalValue: 0
+  characterModels:
+  - {fileID: 599386200463425227, guid: 20f56016a323b5041bd6023239c2b46f, type: 3}
 --- !u!114 &2056448383678147981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,8 +368,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 7
---- !u!137 &8429145129022402565 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 4315648579854482848, guid: 4c7a46fdbc5c1d042a6cfb76cbbc8e91, type: 3}
-  m_PrefabInstance: {fileID: 5701017617917873573}
-  m_PrefabAsset: {fileID: 0}

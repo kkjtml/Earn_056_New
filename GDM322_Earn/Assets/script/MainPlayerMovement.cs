@@ -11,28 +11,14 @@ public class MainPlayerMovement : NetworkBehaviour
     public float speed = 5.0f;
     public float rotationSpeed = 10.0f;
     Rigidbody rb;
-
     public TMP_Text namePrefab;
     private TMP_Text nameLabel;
     private NetworkVariable<int> postX = new NetworkVariable<int>(0,
     NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-
     public NetworkVariable<NetworkString> playerNameA = new NetworkVariable<NetworkString>(
     new NetworkString { info = "Player" }, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     public NetworkVariable<NetworkString> playerNameB = new NetworkVariable<NetworkString>(
         new NetworkString { info = "Player" }, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-
-    public Renderer eyerender;
-    private MaterialPropertyBlock materialPropertyBlock;
-    private static readonly int MainTex = Shader.PropertyToID("_MainTex");
-
-    public Texture defaultEyeTexture; //ตาเริ่มต้น
-    public Texture changeEyeTexture; //ตาที่เปลี่ยน
-
-    public NetworkVariable<int> eyeTextureStatus = new NetworkVariable<int>(0,
-        NetworkVariableReadPermission.Everyone,
-        NetworkVariableWritePermission.Server);
-
     private LoginManagerScipt loginManager;
 
     public struct NetworkString : INetworkSerializable
@@ -62,16 +48,12 @@ public class MainPlayerMovement : NetworkBehaviour
     {
         if (nameLabel != null)
             nameLabel.enabled = true;
-
-        eyeTextureStatus.OnValueChanged += (previous, current) => UpdateEyeTexture(current);
     }
 
     private void OnDisable()
     {
         if (nameLabel != null)
             nameLabel.enabled = false;
-
-        eyeTextureStatus.OnValueChanged += (previous, current) => UpdateEyeTexture(current);
     }
 
     public override void OnNetworkSpawn()
@@ -79,9 +61,7 @@ public class MainPlayerMovement : NetworkBehaviour
         GameObject canvas = GameObject.FindWithTag("MainCanvas");
         nameLabel = Instantiate(namePrefab, Vector3.zero, Quaternion.identity);
         nameLabel.transform.SetParent(canvas.transform);
-
         base.OnNetworkSpawn();
-        UpdateEyeTexture(eyeTextureStatus.Value);
 
         postX.OnValueChanged += (int previousValue, int newValue) =>
         {
@@ -121,14 +101,13 @@ public class MainPlayerMovement : NetworkBehaviour
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                RequestToggleEyeTextureServerRpc();
+                // RequestSwapCharacterModelServerRpc();
             }
         }
 
         Vector3 nameLabelPos = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 3.0f, 0));
         nameLabel.text = gameObject.name;
         nameLabel.transform.position = nameLabelPos;
-
         UpdatePlayerInfo();
     }
 
@@ -158,25 +137,6 @@ public class MainPlayerMovement : NetworkBehaviour
         else
         {
             nameLabel.text = playerNameB.Value.ToString();
-        }
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    private void RequestToggleEyeTextureServerRpc(ServerRpcParams rpcParams = default)
-    {
-        eyeTextureStatus.Value = (eyeTextureStatus.Value == 0) ? 1 : 0;
-    }
-
-    private void UpdateEyeTexture(int status)
-    {
-        if (eyerender != null)
-        {
-            if (materialPropertyBlock == null)
-                materialPropertyBlock = new MaterialPropertyBlock();
-
-            Texture newTexture = (status == 1) ? changeEyeTexture : defaultEyeTexture;
-            materialPropertyBlock.SetTexture(MainTex, newTexture);
-            eyerender.SetPropertyBlock(materialPropertyBlock);
         }
     }
 
