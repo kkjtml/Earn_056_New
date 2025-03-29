@@ -6,7 +6,7 @@ using TMPro;
 using System.Threading;
 using Unity.Collections;
 
-public class MainPlayerMovement : NetworkBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     public float speed = 5.0f;
     public float rotationSpeed = 10.0f;

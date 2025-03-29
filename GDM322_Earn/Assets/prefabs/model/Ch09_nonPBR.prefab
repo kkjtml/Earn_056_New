@@ -107,9 +107,6 @@ PrefabInstance:
       addedObject: {fileID: -1453384611677483313}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5db9fa19ca4d96d48953a79ce383371e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5837339911898202958}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5db9fa19ca4d96d48953a79ce383371e, type: 3}
-      insertIndex: -1
       addedObject: {fileID: -3539762398288159787}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5db9fa19ca4d96d48953a79ce383371e, type: 3}
       insertIndex: -1
@@ -203,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1366004648
+  GlobalObjectIdHash: 3970826140
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -274,30 +271,7 @@ MonoBehaviour:
   scripts:
   - {fileID: 8450183071241455868}
   - {fileID: -9153944751485198236}
-  - {fileID: 5837339911898202958}
---- !u!114 &5837339911898202958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599386200463425227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ef716eb39165842872d85d35a29315, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  rotationSpeed: 10
-  namePrefab: {fileID: 469099481093789672, guid: a487622fd8acff24bb825e7a7957a449, type: 3}
-  originalModelIndex:
-    m_InternalValue: 0
-  characterModelIndex:
-    m_InternalValue: 0
-  isSwapped:
-    m_InternalValue: 0
-  characterModels:
-  - {fileID: 4890764611997937908, guid: 204393305d9ca5947a113ec47204f329, type: 3}
+  - {fileID: 0}
 --- !u!114 &-3539762398288159787
 MonoBehaviour:
   m_ObjectHideFlags: 0

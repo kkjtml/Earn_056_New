@@ -114,9 +114,6 @@ PrefabInstance:
       addedObject: {fileID: 5173791022550403611}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4c7a46fdbc5c1d042a6cfb76cbbc8e91, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6930048863109298854}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4c7a46fdbc5c1d042a6cfb76cbbc8e91, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2056448383678147981}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4c7a46fdbc5c1d042a6cfb76cbbc8e91, type: 3}
       insertIndex: -1
@@ -295,26 +292,7 @@ MonoBehaviour:
   scripts:
   - {fileID: 7625812537246428889}
   - {fileID: 2968155500288265689}
-  - {fileID: 6930048863109298854}
---- !u!114 &6930048863109298854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4890764611997937908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ef716eb39165842872d85d35a29315, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  rotationSpeed: 10
-  namePrefab: {fileID: 469099481093789672, guid: a487622fd8acff24bb825e7a7957a449, type: 3}
-  characterModelIndex:
-    m_InternalValue: 0
-  characterModels:
-  - {fileID: 599386200463425227, guid: 20f56016a323b5041bd6023239c2b46f, type: 3}
+  - {fileID: 0}
 --- !u!114 &2056448383678147981
 MonoBehaviour:
   m_ObjectHideFlags: 0
